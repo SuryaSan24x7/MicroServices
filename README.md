@@ -1,12 +1,12 @@
 # MicroServices
 Small Devops Project using SpringBoot
 Microservice project for an e-
-commerce. Create User microservice with
-UserId, Name, Mobile, Contact.
-1-create a folder mservice
-2-open eclipse
-3.spring boot Tool installed in eclipse
-4-create a user_service @https://start.spring.io/
+commerce. 
+## Create User microservice with UserId, Name, Mobile, Contact.
+### 1-create a folder mservice
+### 2-open eclipse
+### 3.spring boot Tool installed in eclipse
+### 4-create a user_service @https://start.spring.io/
 Project Maven Language Java
 springboot 3.0.1
 Group com.user
@@ -17,14 +17,10 @@ PackageName com.user
 Packaging Jar
 Java 19
 Dependencies-Spring Web
-5.Extract Generated zip @mservice
-
-  
- 
-
-6.in src/main/resources/application-properties
+### 5.Extract Generated zip @mservice
+### 6. In src/main/resources/application-properties
 set server.port=9001
-7.create new class in src/main/java/com/user/entity/User.java
+### 7.Create new class in src/main/java/com/user/entity/User.java
 package com.user.entity;
 import java.util.ArrayList;
 import java.util.List;
@@ -74,8 +70,7 @@ public void setContacts(List<Contact> contacts) {
 this.contacts = contacts;
 }
 }
-8.Create Contact.java at same location
-package com.user.entity;
+### 8.Create Contact.java at same location package com.user.entity;
 public class Contact {
 private Long cId;
 private String email;
@@ -87,9 +82,6 @@ this.email = email;
 this.contactName = contactName;
 this.userId = userId;
 }
-
-  
- 
 
 public Contact() {
 }
@@ -122,8 +114,7 @@ public void setUserId(Long userId) {
 this.userId = userId;
 }
 }
-9.create new Interface in
-src/main/java/com/user/service/UserServiceApplication.java
+### 9.create new Interface in src/main/java/com/user/service/UserServiceApplication.java
 package com.user;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -153,7 +144,7 @@ public User getUser(Long id) {
 return list.stream().filter(user ->user.getUserId().equals(id)).findAny().orElse(null);
 }
 }
-10.create new class in src/main/java/com/user/controller/
+### 10.create new class in src/main/java/com/user/controller/
 package com.user.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -162,9 +153,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 //import org.springframework.web.client.RestTemplate;
 import com.user.entity.User;
-
-  
- 
 
 import com.user.service.UserService;
 @RestController
@@ -180,9 +168,9 @@ User user =this.userService.getUser(userId);
 return user;
 }
 }
-Contact microservice with ContactId,
-Name, Email, UserId for above microservice.
-Ans : create a contact_service @https://start.spring.io/
+## Contact microservice with ContactId, Name, Email, UserId for above microservice.
+
+### create a contact_service @https://start.spring.io/
 Project Maven Language Java
 springboot 3.0.1
 Group com.user
@@ -197,10 +185,10 @@ Java 19
  
 
 Dependencies-Spring Web
-Follow steps similar to user_services
-1. in src/main/resources/application-properties
+### Follow steps similar to user_services
+### 1. in src/main/resources/application-properties
 set server.port=9002
-2. create new class in src/main/java/com/contact/entity/Contact.java
+### 2. create new class in src/main/java/com/contact/entity/Contact.java
 package com.contact.entity;
 public class Contact {
 private Long cId;
@@ -245,14 +233,14 @@ return userId;
 public void setUserId(Long userId) {
 this.userId = userId;
 }}
-3. create new Interface in src/main/java/com/contact/service/ ContactService.java
+### 3. create new Interface in src/main/java/com/contact/service/ ContactService.java
 package com.contact.service;
 import java.util.List;
 import com.contact.entity.Contact;
 public interface ContactService {
 public List<Contact> getContactsOfUser(Long userId);
 }
-4. Also create an implementation class at same location (ContactServiceImpl.java)
+### 4. Also create an implementation class at same location (ContactServiceImpl.java)
 package com.contact.service;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -277,7 +265,7 @@ contact.getUserId().equals(userId)).collect(Collectors.toList());
 }
 
   
-5. create new class in src/main/java/com/contact/controller/ContactController.java
+### 5. create new class in src/main/java/com/contact/controller/ContactController.java
 package com.contact.controller;
 import com.contact.entity.Contact;
 import com.contact.service.ContactService;
@@ -300,9 +288,8 @@ return this.contactService.getContactsOfUser(userId);
   
  
 
-APIGateway and Eserver(Service
-Discovery) for the above microservice.
-1.Create APIGateway @https://start.spring.io/
+## APIGateway and Eserver(Service Discovery) for the above microservice.
+### 1.Create APIGateway @https://start.spring.io/
 Project Maven Language Java
 springboot 3.0.1
 Group com.apigateway
@@ -349,8 +336,8 @@ public static void main(String[] args) {
 SpringApplication.run(ApigatewayApplication.class, args);
 }
 }
-2.Create Eserver using Eureka Netflix Server
-a. Application.yml
+### 2.Create Eserver using Eureka Netflix Server
+#### a. Application.yml
 server:
 port: 8761
 eureka:
@@ -365,7 +352,7 @@ hostname: localhost
   
  
 
-b. EserverApplication.java
+#### b. EserverApplication.java
 package com.eserver;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
